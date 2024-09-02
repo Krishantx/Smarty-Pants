@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { HeaderLogin } from "@/sections/Header_login";
 import { FooterLogin } from "@/sections/Footer_login";
+import Sidebar from "@/components/Sidebar"; // Import Sidebar component
 
 export default function Timer() {
   const [isRunning, setIsRunning] = useState(false);
@@ -150,95 +151,98 @@ export default function Timer() {
         }
       `}</style>
       <HeaderLogin />
-      <div className="animated-background flex flex-col items-center justify-center min-h-screen">
-        {/* Bubble elements */}
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
-        <div className="bubble"></div>
+      <div className="flex">
+        <Sidebar /> {/* Sidebar component added here */}
+        <div className="animated-background flex flex-col items-center justify-center min-h-screen flex-grow">
+          {/* Bubble elements */}
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
 
-        <div className="flex space-x-2 mb-8">
-          <Button
-            variant={activeButton === "pomodoro" ? "default" : "secondary"}
-            size="default"
-            className={`rounded-full font-bold px-6 py-2 text-sm tracking-wide ${
-              activeButton === "pomodoro"
-                ? "bg-[#4DD0E1] text-white"
-                : "bg-white text-gray-700"
-            }`}
-            onClick={() => {
-              setActiveButton("pomodoro");
-              resetTimer();
-            }}
-          >
-            POMODORO TIMER
-          </Button>
-          <Button
-            variant={activeButton === "stopwatch" ? "default" : "secondary"}
-            size="default"
-            className={`rounded-full font-bold px-6 py-2 text-sm tracking-wide ${
-              activeButton === "stopwatch"
-                ? "bg-[#4DD0E1] text-white"
-                : "bg-white text-gray-700"
-            }`}
-            onClick={() => {
-              setActiveButton("stopwatch");
-              resetTimer();
-            }}
-          >
-            STOPWATCH
-          </Button>
-        </div>
-
-        <div className="text-sm text-gray-600 mb-4 font-bold"> {sessionCount} of 4 </div>
-
-        <div className="flex items-center mb-8">
-          <div className="w-48 h-48 flex items-center justify-center bg-[#263238] text-white text-8xl rounded-lg font-['Roboto_Mono'] font-bold">
-            {displayTime(activeButton === "pomodoro" ? time : elapsedTime).split(':')[0]}
+          <div className="flex space-x-2 mb-8">
+            <Button
+              variant={activeButton === "pomodoro" ? "default" : "secondary"}
+              size="default"
+              className={`rounded-full font-bold px-6 py-2 text-sm tracking-wide ${
+                activeButton === "pomodoro"
+                  ? "bg-[#4DD0E1] text-white"
+                  : "bg-white text-gray-700"
+              }`}
+              onClick={() => {
+                setActiveButton("pomodoro");
+                resetTimer();
+              }}
+            >
+              POMODORO TIMER
+            </Button>
+            <Button
+              variant={activeButton === "stopwatch" ? "default" : "secondary"}
+              size="default"
+              className={`rounded-full font-bold px-6 py-2 text-sm tracking-wide ${
+                activeButton === "stopwatch"
+                  ? "bg-[#4DD0E1] text-white"
+                  : "bg-white text-gray-700"
+              }`}
+              onClick={() => {
+                setActiveButton("stopwatch");
+                resetTimer();
+              }}
+            >
+              STOPWATCH
+            </Button>
           </div>
-          <div className="text-8xl mx-4 text-[#263238] font-['Roboto_Mono'] font-bold">:</div>
-          <div className="w-48 h-48 flex items-center justify-center bg-[#263238] text-white text-8xl rounded-lg font-['Roboto_Mono'] font-bold">
-            {displayTime(activeButton === "pomodoro" ? time : elapsedTime).split(':')[1]}
+
+          <div className="text-sm text-gray-600 mb-4 font-bold"> {sessionCount} of 4 </div>
+
+          <div className="flex items-center mb-8">
+            <div className="w-48 h-48 flex items-center justify-center bg-[#263238] text-white text-8xl rounded-lg font-['Roboto_Mono'] font-bold">
+              {displayTime(activeButton === "pomodoro" ? time : elapsedTime).split(':')[0]}
+            </div>
+            <div className="text-8xl mx-4 text-[#263238] font-['Roboto_Mono'] font-bold">:</div>
+            <div className="w-48 h-48 flex items-center justify-center bg-[#263238] text-white text-8xl rounded-lg font-['Roboto_Mono'] font-bold">
+              {displayTime(activeButton === "pomodoro" ? time : elapsedTime).split(':')[1]}
+            </div>
           </div>
-        </div>
 
-        <div className="flex justify-between w-[calc(2*12rem+2rem)] mb-8">
-          <div className="text-sm text-gray-600 font-medium tracking-wide">MINUTES</div>
-          <div className="text-sm text-gray-600 font-medium tracking-wide">SECONDS</div>
-        </div>
+          <div className="flex justify-between w-[calc(2*12rem+2rem)] mb-8">
+            <div className="text-sm text-gray-600 font-medium tracking-wide">MINUTES</div>
+            <div className="text-sm text-gray-600 font-medium tracking-wide">SECONDS</div>
+          </div>
 
-        <div className="flex space-x-4">
-          <Button
-            size="lg"
-            variant="secondary"
-            className={`rounded-md transform transition-all w-36 h-16 text-xl font-bold tracking-wide ${
-              buttonState === 'pause' ? 'bg-[#4DD0E1] text-white' : 'bg-white text-[#263238]'
-            }`}
-            onClick={pauseTimer}
-          >
-            PAUSE
-          </Button>
-          <Button
-            size="lg"
-            variant="secondary"
-            className={`rounded-md transform transition-all w-36 h-16 text-xl font-bold tracking-wide ${
-              buttonState === 'start' ? 'bg-[#4DD0E1] text-white' : 'bg-white text-[#263238]'
-            }`}
-            onClick={startTimer}
-          >
-            START
-          </Button>
-          <Button
-            size="lg"
-            variant="secondary"
-            className={`rounded-md transform transition-all w-36 h-16 text-xl font-bold tracking-wide ${
-              buttonState === 'reset' ? 'bg-[#4DD0E1] text-white' : 'bg-white text-[#263238]'
-            }`}
-            onClick={resetTimer}
-          >
-            RESET
-          </Button>
+          <div className="flex space-x-4">
+            <Button
+              size="lg"
+              variant="secondary"
+              className={`rounded-md transform transition-all w-36 h-16 text-xl font-bold tracking-wide ${
+                buttonState === 'pause' ? 'bg-[#4DD0E1] text-white' : 'bg-white text-[#263238]'
+              }`}
+              onClick={pauseTimer}
+            >
+              PAUSE
+            </Button>
+            <Button
+              size="lg"
+              variant="secondary"
+              className={`rounded-md transform transition-all w-36 h-16 text-xl font-bold tracking-wide ${
+                buttonState === 'start' ? 'bg-[#4DD0E1] text-white' : 'bg-white text-[#263238]'
+              }`}
+              onClick={startTimer}
+            >
+              START
+            </Button>
+            <Button
+              size="lg"
+              variant="secondary"
+              className={`rounded-md transform transition-all w-36 h-16 text-xl font-bold tracking-wide ${
+                buttonState === 'reset' ? 'bg-[#4DD0E1] text-white' : 'bg-white text-[#263238]'
+              }`}
+              onClick={resetTimer}
+            >
+              RESET
+            </Button>
+          </div>
         </div>
       </div>
       <FooterLogin />

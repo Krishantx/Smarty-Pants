@@ -7,6 +7,7 @@ import Dashboard from "@/assets/dashboard.png";
 import Hat from "@/assets/school.png";
 import Bulb from "@/assets/lightbulb.png";
 import Chat from "@/assets/chat.png";
+import Track from "@/assets/Track.png";
 import ProfileIcon from '@/assets/icon.png';
 import { useRouter } from 'next/navigation'; // For page navigation
 
@@ -47,13 +48,13 @@ const Sidebar: React.FC = () => {
           onClick={() => handleClick('ideas', '/homepage')}
           className={`w-10 h-10 flex items-center justify-center cursor-pointer transition-colors duration-300 ${active === 'ideas' ? 'bg-blue-500' : 'hover:bg-blue-400'} rounded-full`}
         >
-            <Image 
-    src={Bulb} 
-    alt="Ideas" 
-    width={20} 
-    height={20} 
-    style={{ filter: 'invert(100%) brightness(100%)' }} // Apply filter to make the image white
-  />
+          <Image 
+            src={Bulb} 
+            alt="Ideas" 
+            width={20} 
+            height={20} 
+            style={{ filter: 'invert(100%) brightness(100%)' }} // Apply filter to make the image white
+          />
         </div>
 
         <div 
@@ -62,6 +63,14 @@ const Sidebar: React.FC = () => {
           className={`w-10 h-10 flex items-center justify-center cursor-pointer transition-colors duration-300 ${active === 'chat' ? 'bg-blue-500' : 'hover:bg-blue-400'} rounded-full`}
         >
           <Image src={Chat} alt="Chat" width={20} height={20} />
+        </div>
+
+        <div 
+          aria-label="Tracker" 
+          onClick={() => handleClick('tracker', '/timer')}
+          className={`w-10 h-10 flex items-center justify-center cursor-pointer transition-colors duration-300 ${active === 'tracker' ? 'bg-blue-500' : 'hover:bg-blue-400'} rounded-full`}
+        >
+          <Image src={Track} alt="Tracker" width={20} height={20} />
         </div>
       </nav>
 
