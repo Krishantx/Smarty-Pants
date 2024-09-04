@@ -28,6 +28,11 @@ const nextConfig = {
     return config;
   },
 
+  // Add the images configuration to allow external image domains
+  images: {
+    domains: ['img.youtube.com'], // Add YouTube image domain here
+  },
+
   // ...other config
 };
 

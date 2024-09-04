@@ -2,9 +2,13 @@ import React from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-const ProgressCircle: React.FC = () => {
+interface ProgressCircleProps {
+  className?: string;
+}
+
+const ProgressCircle: React.FC<ProgressCircleProps> = ({ className }) => {
   return (
-    <div className="bg-white rounded-lg p-4 shadow-md flex flex-col items-center">
+    <div className={`bg-white rounded-lg p-4 shadow-md flex flex-col items-center ${className}`}>
       <h3 className="text-gray-600 text-sm mb-4">PROGRESS</h3>
       <CircularProgressbar
         value={45}
@@ -16,7 +20,6 @@ const ProgressCircle: React.FC = () => {
         })}
       />
       <p className="text-sm text-gray-500 mt-4">Courses</p>
-      <p className="text-sm text-gray-500">Prototypes</p>
     </div>
   );
 };

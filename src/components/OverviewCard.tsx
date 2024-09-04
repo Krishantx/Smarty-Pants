@@ -4,6 +4,7 @@ interface OverviewCardProps {
   title: string;
   value: string | number;
   icon: React.ReactNode;
+  className?: string;
 }
 
 const OverviewCard: React.FC<OverviewCardProps> = ({ title, value, icon }) => {
