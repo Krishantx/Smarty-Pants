@@ -25,7 +25,7 @@ const BlankPage: React.FC = () => {
       {/* Sidebar */}
       <Sidebar className="-72" /> {/* Adjust width as needed */}
 
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col ml-16">
         {/* Header */}
         <HeaderLogin />
 

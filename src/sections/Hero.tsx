@@ -1,6 +1,6 @@
 "use client";
 import ArrowIcon from "@/assets/arrow-right.svg";
-import cogImage from "@/assets/cog.png";
+import cogImage from "@/assets/mascott.png";
 import cylinderImage from "@/assets/cylinder.png";
 import noodleImage from "@/assets/noodle.png";
 import Image from "next/image";

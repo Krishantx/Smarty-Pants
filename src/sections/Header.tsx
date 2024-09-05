@@ -22,12 +22,12 @@ export const Header = () => {
             <Image src={Logo} alt="Saas Logo" height={40} width={40} />
             <MenuIcon className="h-5 w-5 md:hidden" />
             <nav className="hidden md:flex gap-6 text-black/60 items-center">
-              <a href="#">About</a>
-              <a href="#">TImer</a>
-              <a href="#">Roadmaps</a>
-              <a href="#">Blogs</a>
-              <a href="#">Help</a>
-              <a href="#">Profile</a>
+              <a href="/login">About</a>
+              <a href="/login">TImer</a>
+              <a href="/login">Roadmaps</a>
+              <a href="/login">Blogs</a>
+              <a href="/login">Help</a>
+              <a href="/login">Profile</a>
               <Link href="/signup">
                 <button className="bg-black text-white px-4 py-2 rounded-lg font-medium align-items justify-center tracking-tight">
                   Get Started

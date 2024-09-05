@@ -23,8 +23,8 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
   };
 
   return (
-    <aside className={`w-16 bg-gray-900 text-white flex flex-col items-center py-4 h-screen ${className}`}>
-      <div className="w-10 h-10 mb-8 animate-float">
+    <aside className={`fixed top-0 w-16 h-full bg-gray-900 text-white flex flex-col items-center z-50 py-4${className}`}>
+      <div className="w-10 h-10 mb-8 mt-4 animate-float">
         <Image src={Avatar} alt="Avatar" width={40} height={40} />
       </div>
 
@@ -47,7 +47,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className }) => {
 
         <div 
           aria-label="Ideas" 
-          onClick={() => handleClick('ideas', '/homepage')}
+          onClick={() => handleClick('ideas', '/blogs')}
           className={`w-10 h-10 flex items-center justify-center cursor-pointer transition-colors duration-300 ${active === 'ideas' ? 'bg-blue-500' : 'hover:bg-blue-400'} rounded-full`}
         >
           <Image 

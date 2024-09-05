@@ -44,9 +44,9 @@ if __name__ == "__main__":
         sys.exit(1)
     
     youtube_link = sys.argv[1]
-    prompt = """You are a YouTube video summarizer. You will be taking the transcript text
-    and summarizing the entire video and providing the important summary in points
-    within 250 words. Please provide the summary of the text given here:  """
+    prompt = """You are a YouTube video summarizer and notes provider. You will be taking the transcript text
+    and summarizing and giving the notes of the entire video and providing the important summary in points
+    within 1000 words. Please provide the notes of the text given here:  """
 
     try:
         transcript_text = extract_transcript_details(youtube_link)
