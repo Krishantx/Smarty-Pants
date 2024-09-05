@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Avatar from "@/assets/mascott.png";
@@ -9,19 +7,23 @@ import Bulb from "@/assets/lightbulb.png";
 import Chat from "@/assets/chat.png";
 import Track from "@/assets/Track.png";
 import ProfileIcon from '@/assets/icon.png';
-import { useRouter } from 'next/navigation'; // For page navigation
+import { useRouter } from 'next/navigation';
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+  className?: string;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ className }) => {
   const [active, setActive] = useState<string | null>(null);
   const router = useRouter();
 
   const handleClick = (page: string, href: string) => {
     setActive(page);
-    router.push(href); // Navigate to the specified page
+    router.push(href);
   };
 
   return (
-    <aside className="w-16 bg-gray-900 text-white flex flex-col items-center py-4 h-screen">
+    <aside className={`w-16 bg-gray-900 text-white flex flex-col items-center py-4 h-screen ${className}`}>
       <div className="w-10 h-10 mb-8 animate-float">
         <Image src={Avatar} alt="Avatar" width={40} height={40} />
       </div>
@@ -53,13 +55,13 @@ const Sidebar: React.FC = () => {
             alt="Ideas" 
             width={20} 
             height={20} 
-            style={{ filter: 'invert(100%) brightness(100%)' }} // Apply filter to make the image white
+            style={{ filter: 'invert(100%) brightness(100%)' }} 
           />
         </div>
 
         <div 
           aria-label="Chat" 
-          onClick={() => handleClick('chat', '/homepage')}
+          onClick={() => handleClick('chat', '/transcriber')}
           className={`w-10 h-10 flex items-center justify-center cursor-pointer transition-colors duration-300 ${active === 'chat' ? 'bg-blue-500' : 'hover:bg-blue-400'} rounded-full`}
         >
           <Image src={Chat} alt="Chat" width={20} height={20} />
