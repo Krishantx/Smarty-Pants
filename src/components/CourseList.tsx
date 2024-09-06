@@ -5,40 +5,39 @@ import book2 from "@/assets/book2.png";
 
 const CourseList: React.FC = () => {
   const courses = [
-    { name: 'Competitive Programming Templates and Vectors', progress: 20, modules: 2, quizzes: 3 },
-    { name: 'Introduction to Web Development', progress: 0, modules: 0, quizzes: 0 },
+    { name: 'AI/ML and Text to Speech Training Model', progress: 20, modules: 2, quizzes: 3 },
+    { name: 'Crew AI Deployment and Agent Training', progress: 0, modules: 0, quizzes: 0 },
     { name: 'Basic Data Structure & Algorithm', progress: 100, completed: true, modules: 2, quizzes: 5 },
-    { name: 'Java Course', progress: 10, modules: 2, quizzes: 10 },
-    { name: 'Advanced Python Programming', progress: 50, modules: 5, quizzes: 8 },
-    // { name: 'Introduction to Databases', progress: 75, modules: 6, quizzes: 4 },
-    // { name: 'Machine Learning Basics', progress: 40, modules: 4, quizzes: 6 },
-    // { name: 'Cybersecurity Fundamentals', progress: 30, modules: 3, quizzes: 2 },
-    // { name: 'Cloud Computing Essentials', progress: 60, modules: 7, quizzes: 9 },
-    // { name: 'Mobile App Development', progress: 80, modules: 8, quizzes: 10 },
+    { name: 'Advanced cpp Templates', progress: 10, modules: 2, quizzes: 1 },
+    { name: 'Neural networking and Deep Learning', progress: 50, modules: 5, quizzes: 3 },
   ];
 
   return (
-    <div className="bg-white p-4 rounded-md shadow mb-6">
+    <div className="bg-gray-100 p-4 rounded-md shadow mb-6">
       {courses.map((course, index) => (
-        <div key={index} className={`mb-6 ${index !== courses.length - 1 ? 'pb-6 border-b' : ''}`}>
+        <div key={index} className={`mb-6 ${index !== courses.length - 1 ? 'pb-6 border-b border-gray-300' : ''}`}>
           <div className="flex justify-between items-center">
-            <div className="text-gray-700 font-semibold">{course.name}</div>
-            <div className="text-sm text-gray-500">
-              {course.completed ? 'Completed' : `${course.progress}%`}
+            <div className="text-gray-800 font-semibold">{course.name}</div>
+            <div className="text-sm text-gray-600">
+              {course.completed ? (
+                <span className="text-green-600">Completed</span>
+              ) : (
+                `${course.progress}%`
+              )}
             </div>
           </div>
           <div className="flex items-center mt-2 mb-2">
-            {/* Add logo at the start of the progress bar with increased size */}
+            {/* Add logo at the start of the progress bar with the same size */}
             <Image
               src={index % 2 === 0 ? book1 : book2}
               alt={`Book Logo ${index % 2 === 0 ? '1' : '2'}`}
-              width={32}
-              height={32}
+              width={50}
+              height={50}
               className="mr-2"
             />
             <div className="flex-grow bg-gray-300 h-2 rounded-full">
               <div
-                className="bg-black h-2 rounded-full"
+                className="bg-blue-700 h-2 rounded-full"
                 style={{ width: `${course.progress}%` }}
               ></div>
             </div>

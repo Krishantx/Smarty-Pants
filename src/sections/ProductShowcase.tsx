@@ -1,7 +1,7 @@
 "use client";
 import productImage from "@/assets/DASHBOARD (1).png";
-import pyramidImage from "@/assets/pyramid.png";
-import tubeImage from "@/assets/tube.png";
+import pyramidImage from "@/assets/magnify.png";
+import tubeImage from "@/assets/glasses.png";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
@@ -16,7 +16,7 @@ export const ProductShowcase = () => {
   return (
     <section
       ref={sectionRef}
-      className="bg-gradient-to-b from-[#FFFFFF] to-[#D2DCFF] py-24 overflow-x-clip"
+      className="bg-gradient-to-b from-[#FFFFFF] to-[#B2FFFF] py-24 overflow-x-clip"
     >
       <div className="container">
         <div className="section-heading">

@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link'; // Import Next.js Link component
 import Avatar from "@/assets/mascott.png"; // Replace with actual image path
 import WifiRouter from "@/assets/wifi_tethering.png"; // Import the CSS file with animations
 
@@ -7,6 +8,7 @@ interface LiveEvent {
   name: string;
   description: string;
   time: string;
+  link: string; // Add a link field to each event
 }
 
 interface LiveEventsProps {
@@ -15,7 +17,12 @@ interface LiveEventsProps {
 
 const LiveEvents: React.FC<LiveEventsProps> = ({ className }) => {
   const liveEvents: LiveEvent[] = [
-    { name: 'Love Babbar', description: 'Exclusive Competitive Programming Session', time: 'Live Now' },
+    { 
+      name: 'Shayan', 
+      description: 'Latest Codeforces Contest', 
+      time: 'Live Now', 
+      link: 'https://codeforces.com/contests/2005' // Add link for redirection
+    },
   ];
 
   return (
@@ -37,9 +44,11 @@ const LiveEvents: React.FC<LiveEventsProps> = ({ className }) => {
             <p className="text-xs text-gray-500">
               {event.description}
             </p>
-            <p className="text-xs text-blue-500 mt-1">
-              {event.time}
-            </p>
+            <Link href={event.link} passHref> {/* Wrap Live Now with Link */}
+              <a className="text-xs text-blue-500 mt-1 underline">
+                {event.time}
+              </a>
+            </Link>
           </div>
           <div className="flex-shrink-0 ml-3">
             <Image

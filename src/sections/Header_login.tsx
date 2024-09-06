@@ -16,11 +16,11 @@ export const HeaderLogin = () => {
           <div className="flex items-center justify-between">
             <MenuIcon className="h-5 w-5 md:hidden" aria-label="Menu" />
             <nav className="hidden md:flex items-center text-black/60 ml-auto">
-              <a href="#" className="mr-6">About</a>
-              <a href="#" className="mr-6">Timer</a>
-              <a href="#" className="mr-6">Roadmaps</a>
-              <a href="#" className="mr-6">Blogs</a>
-              <a href="#" className="mr-6">Help</a>
+              <a href="/landing" className="mr-6">About</a>
+              <a href="/timer" className="mr-6">Timer</a>
+              <a href="/homepage" className="mr-6">Roadmaps</a>
+              <a href="/blogs" className="mr-6">Blogs</a>
+              <a href="/landing" className="mr-6">Help</a>
               <button className="bg-black text-white px-4 py-2 rounded-lg font-medium align-items justify-center tracking-tight mr-6">
                 Profile
               </button>

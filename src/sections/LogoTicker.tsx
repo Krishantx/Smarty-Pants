@@ -1,10 +1,10 @@
 "use client";
-import acmeLogo from "@/assets/logo-acme.png";
-import quantumLogo from "@/assets/logo-quantum.png";
-import echoLogo from "@/assets/logo-echo.png";
-import celestialLogo from "@/assets/logo-celestial.png";
-import pulseLogo from "@/assets/logo-pulse.png";
-import apexLogo from "@/assets/logo-apex.png";
+import acmeLogo from "@/assets/logo_smarty.png";
+import quantumLogo from "@/assets/logo_smarty.png";
+import echoLogo from "@/assets/logo_smarty.png";
+import celestialLogo from "@/assets/logo_smarty.png";
+import pulseLogo from "@/assets/logo_smarty.png";
+import apexLogo from "@/assets/logo_smarty.png";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -29,31 +29,43 @@ export const LogoTicker = () => {
               src={acmeLogo}
               alt="Acme Logo"
               className="logo-ticker-image"
+              width={200} // Increased width
+              height={200} // Increased height
             />
             <Image
               src={quantumLogo}
               alt="Quantum Logo"
               className="logo-ticker-image"
+              width={200} // Increased width
+              height={200} // Increased height
             />
             <Image
               src={echoLogo}
               alt="Echo Logo"
               className="logo-ticker-image"
+              width={200} // Increased width
+              height={200} // Increased height
             />
             <Image
               src={celestialLogo}
               alt="Celestial Logo"
               className="logo-ticker-image"
+              width={200} // Increased width
+              height={200} // Increased height
             />
             <Image
               src={pulseLogo}
               alt="Pulse Logo"
               className="logo-ticker-image"
+              width={200} // Increased width
+              height={200} // Increased height
             />
             <Image
               src={apexLogo}
               alt="Apex Logo"
               className="logo-ticker-image"
+              width={200} // Increased width
+              height={200} // Increased height
             />
 
             {/* Second set of logos for animation */}
@@ -61,31 +73,43 @@ export const LogoTicker = () => {
               src={acmeLogo}
               alt="Acme Logo"
               className="logo-ticker-image"
+              width={200}
+              height={200}
             />
             <Image
               src={quantumLogo}
               alt="Quantum Logo"
               className="logo-ticker-image"
+              width={200}
+              height={200}
             />
             <Image
               src={echoLogo}
               alt="Echo Logo"
               className="logo-ticker-image"
+              width={200}
+              height={200}
             />
             <Image
               src={celestialLogo}
               alt="Celestial Logo"
               className="logo-ticker-image"
+              width={200}
+              height={200}
             />
             <Image
               src={pulseLogo}
               alt="Pulse Logo"
               className="logo-ticker-image"
+              width={200}
+              height={200}
             />
             <Image
               src={apexLogo}
               alt="Apex Logo"
               className="logo-ticker-image"
+              width={200}
+              height={200}
             />
           </motion.div>
         </div>

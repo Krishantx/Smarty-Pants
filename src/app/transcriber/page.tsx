@@ -7,7 +7,7 @@ import Sidebar from '@/components/Sidebar';
 
 const NoteGenerator: React.FC = () => {
   const [videoLink, setVideoLink] = useState('');
-  const [notes, setNotes] = useState<string | null>(null);
+  const [notes, setNotes] = useState<any | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -33,8 +33,13 @@ const NoteGenerator: React.FC = () => {
         throw new Error('Failed to fetch notes');
       }
 
-      const data = await response.json();
-      setNotes(data.summary);  // Assuming summary is returned as plain text
+      const rawData = await response.json();
+      console.log('Raw response:', rawData);
+
+      // Parse the nested JSON string
+      const nestedSummary = JSON.parse(rawData.summary);
+
+      setNotes(nestedSummary);
     } catch (error) {
       console.error('Error fetching notes:', error);
       setError('Failed to generate notes. Please try again later.');
@@ -43,44 +48,148 @@ const NoteGenerator: React.FC = () => {
     }
   };
 
-  const renderNotes = (summary: string) => {
-    const formattedNotes = summary.split('\n').map((line, index) => {
-      const trimmedLine = line.trim();
+  // Function to convert markdown-like **bold** and *bullet points* to HTML
+  const convertToHtml = (text: string) => {
+    return text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Convert **bold** to <strong>
+      .replace(/\n/g, '<br />') // Convert new lines to <br>
+      .replace(/^\* (.+)$/gm, '<b>• $1</b>') // Convert * bullet points to • <li>
+      .replace(/(<li>.+<\/li>)/g, '<ul>$1</ul>') // Wrap <li> items in <ul>
+      .replace(/<\/ul>\s*<\/ul>/g, '</ul>'); // Handle multiple <ul> tags in case of nested lists
+  };
 
-      if (trimmedLine === '') {
-        return null;  // Skip empty lines
+  const renderNotes = (summary: any) => {
+    if (typeof summary !== 'object' || summary === null) {
+      console.error('Unexpected format for summary:', summary);
+      return <p className="text-red-500">Invalid note format</p>;
+    }
+
+    const renderValue = (value: any) => {
+      if (typeof value === 'string') {
+        return (
+          <p className="text-gray-700" dangerouslySetInnerHTML={{ __html: convertToHtml(value) }} />
+        );
+      } else if (Array.isArray(value)) {
+        return (
+          <ul className="list-disc ml-5">
+            {value.map((item, index) => (
+              <li key={index} dangerouslySetInnerHTML={{ __html: convertToHtml(item) }} />
+            ))}
+          </ul>
+        );
+      } else if (typeof value === 'object') {
+        return renderNotes(value);
+      } else {
+        return <p className="text-gray-700">Unsupported format</p>;
       }
-
-      // Assuming headings start with uppercase letters and no leading bullet points or numbers
-      if (trimmedLine.match(/^[A-Z]/)) {
-        return <h3 key={index} className="text-lg font-bold text-gray-800 mt-6 mb-2">{trimmedLine}</h3>;
-      }
-
-      // Treat lines starting with dashes (-) or numbers as bullet points
-      if (trimmedLine.startsWith('-') || trimmedLine.match(/^\d+\./)) {
-        return <li key={index} className="list-disc ml-5 mb-1">{trimmedLine.substring(1).trim()}</li>;
-      }
-
-      // Render other lines as paragraphs
-      return <p key={index} className="mb-2">{trimmedLine}</p>;
-    });
+    };
 
     return (
       <div className="bg-white p-6 rounded-lg shadow-inner">
-        <h4 className="font-bold mb-4 text-gray-800 text-lg">Generated Notes</h4>
-        <ul className="font-sans text-base text-gray-700 space-y-2">
-          {formattedNotes}
-        </ul>
+        {Object.entries(summary).map(([key, value]) => (
+          <div key={key} className="mb-4">
+            <h3 className="text-lg font-bold text-gray-800">{key.toUpperCase()}</h3>
+            {renderValue(value)}
+          </div>
+        ))}
       </div>
     );
   };
 
   return (
-    <div className="bg-gradient-to-b from-cyan-50 to-cyan-100 min-h-screen flex flex-col">
+    <div className="flex flex-col min-h-screen">
+      <style jsx global>{`
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap');
+
+        body {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .animated-background {
+          background: linear-gradient(120deg, #E3F2FD, #BBDEFB, #4DD0E1);
+          background-size: 300% 300%;
+          animation: gradientAnimation 10s ease infinite;
+          position: relative;
+          overflow: hidden;
+        }
+
+        @keyframes gradientAnimation {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        /* Bubble effect */
+        .bubble {
+          position: absolute;
+          bottom: -50px;
+          background: rgba(255, 255, 255, 0.3);
+          border-radius: 50%;
+          opacity: 0.6;
+          animation: bubbleUp 15s infinite ease-in-out;
+        }
+
+        @keyframes bubbleUp {
+          0% {
+            transform: translateY(0) scale(1);
+            opacity: 0.6;
+          }
+          50% {
+            transform: translateY(-300px) scale(1.2);
+            opacity: 0.8;
+          }
+          100% {
+            transform: translateY(-600px) scale(1.5);
+            opacity: 0;
+          }
+        }
+
+        .bubble:nth-child(1) {
+          width: 80px;
+          height: 80px;
+          left: 10%;
+          animation-duration: 20s;
+        }
+        .bubble:nth-child(2) {
+          width: 120px;
+          height: 120px;
+          left: 30%;
+          animation-duration: 25s;
+          animation-delay: 2s;
+        }
+        .bubble:nth-child(3) {
+          width: 100px;
+          height: 100px;
+          left: 50%;
+          animation-duration: 18s;
+          animation-delay: 4s;
+        }
+        .bubble:nth-child(4) {
+          width: 140px;
+          height: 140px;
+          left: 70%;
+          animation-duration: 22s;
+          animation-delay: 6s;
+        }
+        .bubble:nth-child(5) {
+          width: 90px;
+          height: 90px;
+          left: 90%;
+          animation-duration: 20s;
+          animation-delay: 8s;
+        }
+      `}</style>
       <HeaderLogin />
-      <div className="flex flex-grow">
+      <div className="flex flex-grow animated-background">
         <Sidebar />
-        <div className="flex-grow p-8">
+        <div className="flex-grow p-8 relative">
+          {/* Bubble elements */}
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+          <div className="bubble"></div>
+
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <h1 className="text-5xl font-bold text-gray-800 mb-4">
@@ -127,6 +236,7 @@ const NoteGenerator: React.FC = () => {
           </div>
         </div>
       </div>
+
     </div>
   );
 };

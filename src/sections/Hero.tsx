@@ -1,8 +1,8 @@
 "use client";
 import ArrowIcon from "@/assets/arrow-right.svg";
 import cogImage from "@/assets/mascott.png";
-import cylinderImage from "@/assets/cylinder.png";
-import noodleImage from "@/assets/noodle.png";
+import cylinderImage from "@/assets/pin.png";
+import noodleImage from "@/assets/triangle_1.png";
 import Image from "next/image";
 import {
   motion,
@@ -23,13 +23,13 @@ export const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="pt-8 pb-20 md:pt-5 md:pb-10 bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#183EC2,#EAEEFE_100%)] overflow-x-clip"
+      className="pt-8 pb-20 md:pt-5 md:pb-10 bg-[radial-gradient(ellipse_200%_100%_at_bottom_left,#00FFFF,#EAEEFE_100%)] overflow-x-clip"
     >
       <div className="container">
         <div className="md:flex items-center">
           <div className="md:w-[478px]">
             <div className="tag">Smarty Pants</div>
-            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#001E80] text-transparent bg-clip-text mt-6">
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tighter bg-gradient-to-b from-black to-[#155c5c] text-transparent bg-clip-text mt-6">
               Pathway to productivity
             </h1>
             <p className="text-xl text-[#010D3E] tracking-tight mt-6">

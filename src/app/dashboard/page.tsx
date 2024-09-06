@@ -95,7 +95,6 @@ const Dashboard: React.FC = () => {
           </motion.div>
         </main>
       </div>
-      <FooterLogin />
 
       {/* Bubbles Container */}
       <div className="bubbles-container absolute top-0 left-0 w-full h-full pointer-events-none z-[-1]">

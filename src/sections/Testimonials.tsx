@@ -95,7 +95,7 @@ const TestimonialsColumn = (props: {
       {[...new Array(2)].fill(0).map((_, index) => (
         <React.Fragment key={index}>
           {props.testimonials.map(({ text, imageSrc, name, username }) => (
-            <div className="card">
+            <div className="card" key={username}> {/* Added the 'key' prop */}
               <div>{text}</div>
               <div className="flex items-center gap-2 mt-5">
                 <Image
@@ -128,7 +128,7 @@ export const Testimonials = () => {
           <div className="flex justify-center">
             <div className="tag">Testimonials</div>
           </div>
-          <h2 className="section-title mt-5">What our users say</h2>
+          <h2 className="section-title mt-5">What our students say</h2>
           <p className="section-description mt-5">
             From intuitive design to powerful features, our app has become an
             essential tool for users around the world.

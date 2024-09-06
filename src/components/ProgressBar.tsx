@@ -13,10 +13,10 @@ const ProgressBar: React.FC = () => {
       }}
     >
       {/* Progress Content */}
-      <div className="relative z-10">
+      <div className="relative z-10 h-32">
         <div className="flex justify-between items-center mb-4">
-          <span className="text-gray-600 text-sm">Your Progress</span>
-          <span className="text-gray-600 text-sm">30%</span>
+          <span className="text-gray-600 text-sm pt-16">Your Progress</span>
+          <span className="text-gray-600 text-sm pt-16">30%</span>
         </div>
         <div className="w-full bg-gray-300 h-2 rounded-full">
           <div className="bg-blue-500 h-2 rounded-full" style={{ width: '30%' }}></div>

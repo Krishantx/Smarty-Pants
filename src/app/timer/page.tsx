@@ -74,14 +74,21 @@ export default function Timer() {
 
         body {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+          margin: 0;
+          padding: 0;
+          overflow-x: hidden;
         }
 
         .animated-background {
+          position: fixed; /* Ensure it stays in place */
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
           background: linear-gradient(120deg, #E3F2FD, #BBDEFB, #4DD0E1);
           background-size: 300% 300%;
           animation: gradientAnimation 10s ease infinite;
-          position: relative;
-          overflow: hidden;
+          z-index: -1; /* Place it behind other content */
         }
 
         @keyframes gradientAnimation {
@@ -153,7 +160,7 @@ export default function Timer() {
       <HeaderLogin />
       <div className="flex">
         <Sidebar /> {/* Sidebar component added here */}
-        <div className="animated-background flex flex-col items-center justify-center min-h-screen flex-grow">
+        <div className="flex flex-col items-center justify-center min-h-screen flex-grow">
           {/* Bubble elements */}
           <div className="bubble"></div>
           <div className="bubble"></div>
@@ -245,7 +252,6 @@ export default function Timer() {
           </div>
         </div>
       </div>
-      <FooterLogin />
     </>
   );
 }

@@ -18,12 +18,11 @@ export const FooterLogin: React.FC<FooterLoginProps> = ({ className }) => {
           <Image src={logo} height={40} alt="SaaS logo" className="relative" />
         </div>
         <nav className="flex flex-col md:flex-row md:justify-center gap-6 mt-6">
-          <a href="#">About</a>
-          <a href="#">Features</a>
-          <a href="#">Customers</a>
-          <a href="#">Pricing</a>
-          <a href="#">Help</a>
-          <a href="#">Careers</a>
+        <a href="/landing" className="mr-6">About</a>
+              <a href="/timer" className="mr-6">Timer</a>
+              <a href="/homepage" className="mr-6">Roadmaps</a>
+              <a href="/blogs" className="mr-6">Blogs</a>
+              <a href="/landing" className="mr-6">Help</a>
         </nav>
         <div className="flex justify-center gap-6 mt-6">
           <SocialX />

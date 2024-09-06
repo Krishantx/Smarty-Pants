@@ -1,8 +1,8 @@
 'use client';
 import { useState, useRef } from 'react';
 import ArrowRight from "@/assets/arrow-right.svg";
-import starImage from "@/assets/star.png";
-import springImage from "@/assets/spring.png";
+import starImage from "@/assets/triangle.png";
+import springImage from "@/assets/glasses.png";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 
@@ -36,11 +36,11 @@ export const CallToAction = () => {
   };
 
   return (
-    <section ref={sectionRef} className="bg-gradient-to-b from-white to-[#D2DCFF] py-24 overflow-x-clip">
+    <section ref={sectionRef} className="bg-gradient-to-b from-white to-[#A1E4F2] py-24 overflow-x-clip">
       <div className="container">
         <div className="section-heading relative">
-          <h2 className="section-title">Sign up for free today</h2>
-          <p className="section-description mt-5">
+          <h2 className="section-title text-[#083F5B]">Sign up for free today</h2>
+          <p className="section-description mt-5 text-[#083F5B]">
             Celebrate the joy of accomplishment with an app designed to track
             your progress and motivate your efforts.
           </p>
@@ -65,14 +65,13 @@ export const CallToAction = () => {
         </div>
         <div className="flex flex-col md:flex-row gap-2 mt-10 justify-center items-center">
           <button
-            className="btn btn-primary"
+            className="btn bg-[#070707] hover:bg-[#0092B0] text-white font-bold py-2 px-6 rounded-lg"
             onClick={handleGetStarted}
             // disabled={loading}
           >
             Get Started
-
           </button>
-          <button className="btn btn-text gap-1">
+          <button className="btn text-[#083F5B] flex items-center gap-1">
             <span>Learn more</span>
             <ArrowRight className="h-4 w-4 inline-flex justify-center items-center" />
           </button>
